@@ -52,8 +52,6 @@ public class AlienDictionary {
 			if (w.getAlienWord().compareTo(alienWord)==0) {
 				// la parola c'e' ne visualizzo tutte le traduzioni
 				traduzione= w.toString(); 
-				break; 
-				
 			}
 		}
 		
