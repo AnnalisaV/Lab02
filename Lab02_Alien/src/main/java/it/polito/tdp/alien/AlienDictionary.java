@@ -5,11 +5,11 @@ import java.util.List;
 
 public class AlienDictionary {
 
-	private List<Word> dictionary; 
+	private List<WordEnhanced> dictionary; 
 	
 	
 	public AlienDictionary() {
-		this.dictionary= new ArrayList<Word>(); 
+		this.dictionary= new ArrayList<WordEnhanced>(); 
 	}
 
 
@@ -20,17 +20,22 @@ public class AlienDictionary {
      */
 	public void addWord(String alienWord, String translation) {
 		
-		Word parola= new Word(alienWord, translation); 
 		
-		for (Word w : dictionary) {
-			if (w.getAlienWord().compareTo(parola.getAlienWord())==0) {
+		
+		for (WordEnhanced w : dictionary) {
+			if (w.getAlienWord().compareTo(alienWord)==0) {
 				// parola aliena gia' presente nel dizionario
-				w.setTranslation(parola.getTranslation());
+				// aggiunge una traduzione per essa
+				w.addWord(translation);
 				return; 
 			}
 		}
 		
+		// la parola non e' presente nel dizionario 
+		WordEnhanced parola= new WordEnhanced(alienWord); 
+		parola.addWord(translation);
 		this.dictionary.add(parola); 
+		
 		
 	}
 	
@@ -43,9 +48,11 @@ public class AlienDictionary {
 		
 		String traduzione=null; 
 		
-		for (Word w : dictionary) {
+		for (WordEnhanced w : dictionary) {
 			if (w.getAlienWord().compareTo(alienWord)==0) {
-				traduzione= w.getTranslation(); 
+				// la parola c'e' ne visualizzo tutte le traduzioni
+				traduzione= w.toString(); 
+				break; 
 				
 			}
 		}

@@ -75,7 +75,7 @@ public class FXMLController {
     		// ho una parola con la traduzione 
     		
     		model.addToDictionary(arrayParola[0], arrayParola[1]); 
-    		txtRisultato.appendText("Nuova parola aggiunta al dizionario \n");
+    		txtRisultato.appendText("Aggiunta al dizionario \n");
     	}
     }
 
