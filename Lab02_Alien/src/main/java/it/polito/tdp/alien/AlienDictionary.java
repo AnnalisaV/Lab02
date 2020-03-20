@@ -1,7 +1,9 @@
 package it.polito.tdp.alien;
 
-import java.util.ArrayList;
+
+import java.util.LinkedList;
 import java.util.List;
+
 
 public class AlienDictionary {
 
@@ -9,7 +11,7 @@ public class AlienDictionary {
 	
 	
 	public AlienDictionary() {
-		this.dictionary= new ArrayList<WordEnhanced>(); 
+		this.dictionary= new LinkedList<WordEnhanced>(); 
 	}
 
 
@@ -20,20 +22,19 @@ public class AlienDictionary {
      */
 	public void addWord(String alienWord, String translation) {
 		
-		
-		
-		for (WordEnhanced w : dictionary) {
+		for (WordEnhanced w: dictionary) {
 			if (w.getAlienWord().compareTo(alienWord)==0) {
 				// parola aliena gia' presente nel dizionario
 				// aggiunge una traduzione per essa
-				w.addWord(translation);
+				w.addTraduzione(translation);
 				return; 
+				}
 			}
-		}
+		
 		
 		// la parola non e' presente nel dizionario 
 		WordEnhanced parola= new WordEnhanced(alienWord); 
-		parola.addWord(translation);
+		parola.addTraduzione(translation);
 		this.dictionary.add(parola); 
 		
 		

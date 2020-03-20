@@ -11,27 +11,18 @@ import java.util.List;
 public class WordEnhanced {
 
 	private String alienWord; 
-	//private String translation;
+	private List<String> translations; //lista di traduzione per la alien word
 	
-	private List<String> traduzioni;
 	
-	/*
+	
 	/** 
 	 * @param alienWord parola aliena 
-	 * @param translation corrispettiva traduzione in lingua non aliena 
 	 */
-	/*public WordEnhanced(String alienWord, String translation) {
+	public WordEnhanced(String alienWord) {
 		super();
 		this.alienWord = alienWord;
-		//this.translation = translation;
-		
-		this.traduzioni= new LinkedList<String>(); 
-	}
-*/
-
-	public WordEnhanced(String alienWord) {
-		this.alienWord= alienWord; 
-		this.traduzioni= new LinkedList<String>(); 
+       this.translations = new LinkedList<String>();
+	
 	}
 
 
@@ -40,55 +31,47 @@ public class WordEnhanced {
 		return alienWord;
 	}
 
-
-
-
-
-	public void setAlienWord(String alienWord) {
+    public void setAlienWord(String alienWord) {
 		this.alienWord = alienWord;
 	}
 
-
-
-
-
-	/*public String getTranslation() {
-		return translation;
-	}*/
-
-
-
-
-
-	/*public void setTranslation(String translation) {
-		this.translation = translation;
-	}*/
-
-
-
-
-
-	public List<String> getTraduzioni() {
-		return traduzioni;
+    public List getTranslations() {
+		return translations;
 	}
 
+    /**
+     * inserimento di nuova traduzione per la parola aliena 
+     */
+    public void addTraduzione(String translation) {
+    	int uguali=0; // quante parole sono come quella passata 
+    	for (String s : translations) {
+    		if(s.compareTo(translation)==0) {
+    			uguali++; // vi e' gia' quella traduzione quindi incremento il conto
+    			}
+    		}
+    	// solo se quella traduzione non e' ancora presente, al aggiungo alla lista
+    	if (uguali ==0)
+    		translations.add(translation); 
+    }
 
-	public void addWord(String s) {
-		
-		for (String ss : this.traduzioni) {
-			// se la stringa di traduzione non e' gia' presente fra le traduzioni, 
-			//allora viene aggiunta
-			if (ss.compareTo(s) !=0) {
-				traduzioni.add(s);
-			}
+
+    
+
+
+
+	@Override
+	public String toString() {
+		String ss=""; 
+		for (String s : translations) {
+			ss+=s+"\n"; 
 		}
-		
+		return ss; 
 	}
 
 
 
 	/**
-	 * Considerate uguali quando la aprola aliena e' la stessa
+	 * Considerate uguali quando la parola aliena e' la stessa
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -100,21 +83,6 @@ public class WordEnhanced {
 	}
 
 
-
-
-   /**
-    * Come si presenta questa parola 
-    * @return elenco delle traduzioni associate a quella parola
-    */
-	@Override
-	public String toString() {
-		String s=""; 
-		for (String ss : this.traduzioni) {
-			s+=ss+"\n"; 
-		}
-		return s; 
-	} 
-	
 	
 	
 }

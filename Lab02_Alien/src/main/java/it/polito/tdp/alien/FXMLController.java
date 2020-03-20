@@ -67,7 +67,7 @@ public class FXMLController {
     		String translation=model.toTranslate(arrayParola[0]); 
     		
     		if (translation!=  null)
-    		txtRisultato.appendText(translation+"\n");
+    		txtRisultato.appendText(translation);
     		else txtRisultato.appendText("Parola inesistente nel dizionario\n");
     		
     		}
